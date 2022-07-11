@@ -6,13 +6,14 @@ public class ZombieController : MonoBehaviour
 {
     // Movement
     private float originalX;
-    private float maxOffset = 5.0f;
-    private float enemyPatroltime = 5.0f;
-    private int moveRight = -1;
+    // private float maxOffset = 5.0f;
+    // private float enemyPatroltime = 5.0f;
+    // private int moveRight = -1;
     private Vector2 velocity;
 
     // Damage
     public int health = 20;
+    public GameObject target;
 
     private Rigidbody2D enemyBody;
 
@@ -26,7 +27,7 @@ public class ZombieController : MonoBehaviour
     }
     
     void ComputeVelocity(){
-        velocity = new Vector2((moveRight)*maxOffset / enemyPatroltime, 0);
+        velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - enemyBody.position.y);
     }
 
     void MoveZombie(){
@@ -37,16 +38,18 @@ public class ZombieController : MonoBehaviour
     void Update()
     {
         // Movement
-        if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
-        {
-            MoveZombie();
-        }
-        else{
-            // change direction
-            moveRight *= -1;
-            ComputeVelocity();
-            MoveZombie();
-        }
+        // if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
+        // {
+        //     MoveZombie();
+        // }
+        // else{
+        //     // change direction
+        //     moveRight *= -1;
+        //     ComputeVelocity();
+        //     MoveZombie();
+        // }
+        ComputeVelocity();
+        MoveZombie();
     }
 
     public void takeDamage(int damage){
