@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ZombieController : MonoBehaviour
@@ -13,7 +14,11 @@ public class ZombieController : MonoBehaviour
 
     // Damage
     public int health = 20;
+    public int fullhealth = 20;
     public GameObject target;
+    public Transform HPbar;
+    public Slider ZombieHpBar;
+    public GameObject HpBarObject;
 
     private Rigidbody2D enemyBody;
 
@@ -50,12 +55,17 @@ public class ZombieController : MonoBehaviour
         // }
         ComputeVelocity();
         MoveZombie();
+        // HP bar follow the zombie
+        HPbar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 1.2f);
     }
 
     public void takeDamage(int damage){
         health -= damage;
+        float hpbar = (float)health/(float)fullhealth;
+        ZombieHpBar.value = hpbar;
         if(health<=0){
             Destroy(gameObject);
+            Destroy(HpBarObject);
         }
     }
 }
