@@ -15,13 +15,27 @@ public class ZombieController : MonoBehaviour
     // Damage
     public int health = 20;
     public int fullhealth = 20;
+    public float MAX_X_SPEED = 0.4f;
+    public float MAX_Y_SPEED = 0.2f;
     public GameObject target;
     public Transform HPbar;
     public Slider ZombieHpBar;
     public GameObject HpBarObject;
 
     private Rigidbody2D enemyBody;
+    private bool isFacingRight = true;
 
+    void Flip()    
+      {
+          isFacingRight = !isFacingRight;
+  
+          Vector3 theScale = transform.localScale;
+          theScale.x *= -1;
+          transform.localScale = theScale;
+  
+          // Flip collider over the x-axis
+          // center.x = -center.x;
+      }
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +47,16 @@ public class ZombieController : MonoBehaviour
     
     void ComputeVelocity(){
         velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - enemyBody.position.y);
+        if(velocity.x>MAX_X_SPEED) velocity.x=MAX_X_SPEED;
+        else if(velocity.x<-MAX_X_SPEED) velocity.x=-MAX_X_SPEED;
+        if(velocity.y>MAX_Y_SPEED) velocity.y=MAX_Y_SPEED;
+        else if(velocity.y<-MAX_Y_SPEED) velocity.y=-MAX_Y_SPEED;
     }
 
     void MoveZombie(){
+        // flip the zombie
+        if(velocity.x < 0f && isFacingRight == true) Flip();
+        else if(velocity.x > 0f && isFacingRight == false) Flip();
         enemyBody.MovePosition(enemyBody.position + velocity * Time.fixedDeltaTime);
     }
 
