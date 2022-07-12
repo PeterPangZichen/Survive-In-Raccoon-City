@@ -47,6 +47,7 @@ public class ZombieController : MonoBehaviour
     
     void ComputeVelocity(){
         velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - enemyBody.position.y);
+        // Speed Control
         if(velocity.x>MAX_X_SPEED) velocity.x=MAX_X_SPEED;
         else if(velocity.x<-MAX_X_SPEED) velocity.x=-MAX_X_SPEED;
         if(velocity.y>MAX_Y_SPEED) velocity.y=MAX_Y_SPEED;

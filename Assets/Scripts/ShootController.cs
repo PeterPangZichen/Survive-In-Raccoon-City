@@ -18,7 +18,7 @@ public class ShootController : MonoBehaviour
     {
         if(Input.GetKeyDown("j")){
             Shoot();
-            Debug.Log("Keydown J");
+            //Debug.Log("Keydown J");
         }
     }
 

@@ -149,3 +149,4 @@ MonoBehaviour:
   speed: 20
   damage: 10
   bulletRigidBody: {fileID: 6150367428853125867}
+  Player: {fileID: 1448066901106251595, guid: 41c066894f685734a83d6c60ebf2159c, type: 3}
