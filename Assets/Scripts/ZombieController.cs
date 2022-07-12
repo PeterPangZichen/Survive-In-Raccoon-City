@@ -17,10 +17,13 @@ public class ZombieController : MonoBehaviour
     public int fullhealth = 20;
     public float MAX_X_SPEED = 0.4f;
     public float MAX_Y_SPEED = 0.2f;
+    public float Attack_range_x = 0.01f;
+    public float Attack_range_y = 0.01f;
     public GameObject target;
     public Transform HPbar;
     public Slider ZombieHpBar;
     public GameObject HpBarObject;
+    Animator animator;
 
     private Rigidbody2D enemyBody;
     private bool isFacingRight = true;
@@ -40,18 +43,25 @@ public class ZombieController : MonoBehaviour
     void Start()
     {
         enemyBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         // get the starting position
         originalX = transform.position.x;
         ComputeVelocity();
     }
     
     void ComputeVelocity(){
-        velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - enemyBody.position.y);
+        velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - (enemyBody.position.y-1f));
         // Speed Control
+        float distance = Mathf.Sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
+        animator.SetFloat("Distance", distance);
         if(velocity.x>MAX_X_SPEED) velocity.x=MAX_X_SPEED;
         else if(velocity.x<-MAX_X_SPEED) velocity.x=-MAX_X_SPEED;
         if(velocity.y>MAX_Y_SPEED) velocity.y=MAX_Y_SPEED;
         else if(velocity.y<-MAX_Y_SPEED) velocity.y=-MAX_Y_SPEED;
+        if(distance<2){
+            velocity.x = 0f;
+            velocity.y = 0f;
+        }
     }
 
     void MoveZombie(){
