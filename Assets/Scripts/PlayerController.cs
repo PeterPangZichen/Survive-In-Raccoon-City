@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private bool faceRightState = true;
 
     public float runSpeed = 10.0f;
+    public int HP = 100;
     
     
     // Start is called before the first frame update
