@@ -11,6 +11,18 @@ public class PlayerController : MonoBehaviour
     private float vertical;
 
     private bool faceRightState = true;
+    private int CurrentWeapon;
+    // 1 for deagle
+    // 2 for nova
+    // 3 for uzi
+    // 4 for AWP
+    // 5 for RPG
+    public SpriteRenderer weaponSpriteRenderer;
+    public Sprite deagleSprite;
+    public Sprite novaSprite;
+    public Sprite uziSprite;
+    public Sprite AWPSprite;
+    public Sprite RPGSprite;
 
     public float runSpeed = 10.0f;
     public int HP = 100;
@@ -28,7 +40,35 @@ public class PlayerController : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         playerBody = GetComponent<Rigidbody2D>();   
         WeaponObject = gameObject.transform.GetChild(1).gameObject;     
-        FirePointObject = gameObject.transform.GetChild(1).gameObject;    
+        FirePointObject = gameObject.transform.GetChild(0).gameObject;    
+        CurrentWeapon = 1;
+    }
+
+    public void ChangeCurrentWeapon(int weapon){
+        if(CurrentWeapon==weapon) return;
+        CurrentWeapon = weapon;
+        // todo: change the fire point of each weapon;
+        if(CurrentWeapon == 1){
+            weaponSpriteRenderer.sprite = deagleSprite;
+            return;
+        }
+        if(CurrentWeapon == 2){
+            weaponSpriteRenderer.sprite = novaSprite;
+            return;
+        }
+        if(CurrentWeapon == 3){
+            weaponSpriteRenderer.sprite = uziSprite;
+            return;
+        }
+        if(CurrentWeapon == 4){
+            weaponSpriteRenderer.sprite = AWPSprite;
+            return;
+        }
+        if(CurrentWeapon == 5){
+            weaponSpriteRenderer.sprite = RPGSprite;
+            return;
+        }
+        
     }
 
     // Update is called once per frame
@@ -64,7 +104,12 @@ public class PlayerController : MonoBehaviour
             WeaponObject.transform.localPosition = new Vector3(0.68f,0.6f,0f);
             FirePointObject.transform.localPosition = new Vector3(1.05f,0.73f,0f);
         }
-
+        // to test gun switching only:
+        if (Input.GetKeyDown("p")){
+            Debug.Log("Keydown P");
+            Debug.Log(CurrentWeapon);
+            ChangeCurrentWeapon((CurrentWeapon%5)+1);
+        }
         
     }
 
