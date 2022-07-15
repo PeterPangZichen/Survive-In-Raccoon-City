@@ -12,11 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private bool faceRightState = true;
     private int CurrentWeapon;
-    // 1 for deagle
-    // 2 for nova
-    // 3 for uzi
-    // 4 for AWP
-    // 5 for RPG
+    // 1 for deagle 2 for nova 3 for uzi 4 for AWP 5 for RPG
     public SpriteRenderer weaponSpriteRenderer;
     public Sprite deagleSprite;
     public Sprite novaSprite;
@@ -45,30 +41,70 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ChangeCurrentWeapon(int weapon){
+        // 1 for deagle 2 for nova 3 for uzi 4 for AWP 5 for RPG
         if(CurrentWeapon==weapon) return;
         CurrentWeapon = weapon;
         // todo: change the fire point of each weapon;
         if(CurrentWeapon == 1){
             weaponSpriteRenderer.sprite = deagleSprite;
-            return;
         }
         if(CurrentWeapon == 2){
             weaponSpriteRenderer.sprite = novaSprite;
-            return;
         }
         if(CurrentWeapon == 3){
             weaponSpriteRenderer.sprite = uziSprite;
-            return;
         }
         if(CurrentWeapon == 4){
             weaponSpriteRenderer.sprite = AWPSprite;
-            return;
         }
         if(CurrentWeapon == 5){
             weaponSpriteRenderer.sprite = RPGSprite;
-            return;
         }
+        GetPositionForWeapon();
+        WeaponObject.transform.localScale = WeaponScale;
+        WeaponObject.transform.localPosition = WeaponPosition;
+        FirePointObject.transform.localPosition = FirePointPosition;
         
+    }
+
+    private Vector3 WeaponPosition = new Vector3(0f,0f,0f);
+    private Vector3 FirePointPosition = new Vector3(0f,0f,0f);
+    private Vector3 WeaponScale = new Vector3(0f,0f,0f);
+
+    void GetPositionForWeapon(){
+        // 1 for deagle 2 for nova 3 for uzi 4 for AWP 5 for RPG
+        int FaceRight = 1;
+        if(!faceRightState) FaceRight = -1;
+        if(CurrentWeapon == 1){
+            WeaponPosition = new Vector3(FaceRight*0.68f,0.6f,0f);
+            FirePointPosition = new Vector3(FaceRight*1.15f,0.71f,0f);
+            WeaponScale = new Vector3(FaceRight*0.158f,0.158f,1f);
+            // scale 0.158 0.158
+        }
+        if(CurrentWeapon == 2){
+            WeaponPosition = new Vector3(FaceRight*0.64f,0.69f,0f);
+            FirePointPosition = new Vector3(FaceRight*1.65f,0.83f,0f);
+            WeaponScale = new Vector3(FaceRight*0.194f,0.191f,1f);
+            // scale 0.194 0.191
+        }
+        if(CurrentWeapon == 3){
+            WeaponPosition = new Vector3(FaceRight*0.45f,0.69f,0f);
+            FirePointPosition = new Vector3(FaceRight*1.01f,0.8f,0f);
+            WeaponScale = new Vector3(FaceRight*0.156f,0.188f,1f);
+            // scale 0.156 0.188
+        }
+        if(CurrentWeapon == 4){
+            WeaponPosition = new Vector3(FaceRight*0.88f,0.71f,0f);
+            FirePointPosition = new Vector3(FaceRight*1.58f,0.78f,0f);
+            WeaponScale = new Vector3(FaceRight*0.33f,0.25f,1f);
+            // scale 0.33 0.25
+        }
+        if(CurrentWeapon == 5){
+            WeaponPosition = new Vector3(FaceRight*0f,0.79f,0f);
+            FirePointPosition = new Vector3(FaceRight*1.58f,0.83f,0f);
+            WeaponScale = new Vector3(FaceRight*0.47f,0.54f,1f);
+            // scale 0.47 0.54
+        }
     }
 
     // Update is called once per frame
@@ -87,8 +123,9 @@ public class PlayerController : MonoBehaviour
             Vector3 scale2 = FirePointObject.transform.localScale;
             scale2.x *= -1;
             FirePointObject.transform.localScale = scale;
-            WeaponObject.transform.localPosition = new Vector3(-0.68f,0.6f,0f);
-            FirePointObject.transform.localPosition = new Vector3(-1.05f,0.73f,0f);
+            GetPositionForWeapon();
+            WeaponObject.transform.localPosition = WeaponPosition;
+            FirePointObject.transform.localPosition = FirePointPosition;
         }
 
         if (Input.GetKeyDown("d") && !faceRightState){
@@ -101,8 +138,9 @@ public class PlayerController : MonoBehaviour
             Vector3 scale2 = FirePointObject.transform.localScale;
             scale2.x *= -1;
             FirePointObject.transform.localScale = scale;
-            WeaponObject.transform.localPosition = new Vector3(0.68f,0.6f,0f);
-            FirePointObject.transform.localPosition = new Vector3(1.05f,0.73f,0f);
+            GetPositionForWeapon();
+            WeaponObject.transform.localPosition = WeaponPosition;
+            FirePointObject.transform.localPosition = FirePointPosition;
         }
         // to test gun switching only:
         if (Input.GetKeyDown("p")){

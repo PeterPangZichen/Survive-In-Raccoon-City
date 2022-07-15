@@ -801,7 +801,7 @@ Transform:
   m_GameObject: {fileID: 1192964225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.68, y: 0.6, z: 0}
-  m_LocalScale: {x: 0.16747794, y: 0.19879024, z: 1}
+  m_LocalScale: {x: 0.15854467, y: 0.15719, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1717698769}
@@ -848,7 +848,7 @@ SpriteRenderer:
   m_SortingLayerID: -1465539489
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: be0bad5390709e8448cf566da354017a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ebbd443602bfd54ab0b72b9a4182aa2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -998,7 +998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544444411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.05, y: 0.73, z: 0}
+  m_LocalPosition: {x: 1.47, y: 0.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1224,6 +1224,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91f71d73329d48a7a03eaccaf5be764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSpriteRenderer: {fileID: 1192964227}
+  deagleSprite: {fileID: 21300000, guid: 7ebbd443602bfd54ab0b72b9a4182aa2, type: 3}
+  novaSprite: {fileID: 21300000, guid: e427fdc3b2d27524086ab0f6463f5d5a, type: 3}
+  uziSprite: {fileID: 21300000, guid: 2ecace1633358e84caa4d66301ee25dc, type: 3}
+  AWPSprite: {fileID: 21300000, guid: 269058d63a6f28943ad91cc13daa1602, type: 3}
+  RPGSprite: {fileID: 21300000, guid: 87fe9dcd16def4647aa2c87152d718cb, type: 3}
   runSpeed: 10
   HP: 100
 --- !u!1 &1860041011
