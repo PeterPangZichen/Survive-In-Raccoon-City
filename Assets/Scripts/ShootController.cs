@@ -12,6 +12,9 @@ public class ShootController : MonoBehaviour
     public GameObject UZIBulletPrefab;
     public GameObject AWPBulletPrefab;
     public GameObject RPGBulletPrefab;
+    private float[] firerate = new float[] {0.2f, 0.4f, 0.1f, 1f, 3f };
+    private float CurrentFirerate = 0f;
+    private float LastShotTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,31 +26,27 @@ public class ShootController : MonoBehaviour
     void Update()
     {
         CurrentWeapon = player.GetComponent<PlayerController>().GetCurrentWeapon();
-        if(CurrentWeapon == 1){
-            if(Input.GetKeyDown("j")){
-            ShootDeagle();
+        CurrentFirerate = firerate[CurrentWeapon-1];
+        if(Input.GetKeyDown("j") && Time.time > LastShotTime + CurrentFirerate){
+            Debug.Log(CurrentWeapon);
+            LastShotTime = Time.time;
+            if(CurrentWeapon == 1){ // shoot 3 per sec
+                ShootDeagle();
+            }
+            if(CurrentWeapon == 2){ // shoot 2 per sec
+                ShootNova();
+            }
+            if(CurrentWeapon == 3){ // shoot 6 per sec
+                ShootUZI();
+            }
+            if(CurrentWeapon == 4){ // shoot 1 per sec
+                ShootAWP();
+            }
+            if(CurrentWeapon == 5){ // shoot 0.33 per sec
+                ShootRPG();
             }
         }
-        if(CurrentWeapon == 2){
-            if(Input.GetKeyDown("j")){
-            ShootNova();
-            }
-        }
-        if(CurrentWeapon == 3){
-            if(Input.GetKeyDown("j")){
-            ShootUZI();
-            }
-        }
-        if(CurrentWeapon == 4){
-            if(Input.GetKeyDown("j")){
-            ShootAWP();
-            }
-        }
-        if(CurrentWeapon == 5){
-            if(Input.GetKeyDown("j")){
-            ShootRPG();
-            }
-        }
+        
         
     }
 

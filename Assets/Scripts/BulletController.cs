@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public float speed = 20f;
-    public int damage = 10;
+    private int damage = 10;
     public Rigidbody2D bulletRigidBody;
     private GameObject Player;
 
@@ -24,6 +24,24 @@ public class BulletController : MonoBehaviour
         else bulletRigidBody.velocity = transform.right * -speed;
     }
 
+    private int getDamageByWeapon(){
+        if(CurrentWeapon == 1){
+            return 5;
+        }
+        if(CurrentWeapon == 2){
+            return 12;
+        }
+        if(CurrentWeapon == 3){
+            return 8;
+        }
+        if(CurrentWeapon == 4){
+            return 20;
+        }
+        if(CurrentWeapon == 5){
+            return 50;
+        }
+        return 0;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -31,12 +49,13 @@ public class BulletController : MonoBehaviour
         if(cnt > 60 && CurrentWeapon == 2){
             Destroy(gameObject);
         }
+        if(cnt > 480) Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other){
         ZombieController zombieController = other.GetComponent<ZombieController>();
         if(zombieController!=null){
-            zombieController.takeDamage(damage);
+            zombieController.takeDamage(getDamageByWeapon());
             Destroy(gameObject);
         }
     }
