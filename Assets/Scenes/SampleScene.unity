@@ -1019,7 +1019,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1544444412}
   DeagleBulletPrefab: {fileID: 7775853212608063987, guid: 3b17b6cd31d1e441488c22508f04bd8f, type: 3}
-  NovaBulletPrefab: {fileID: 3559885796835956721, guid: f217ccdd0bf09824aa5d7755b922f09e, type: 3}
+  NovaBulletPrefab: {fileID: 3697207833978945709, guid: f217ccdd0bf09824aa5d7755b922f09e, type: 3}
+  UZIBulletPrefab: {fileID: 3978671383583587700, guid: 294d1912ab555904babd0908988e4d0c, type: 3}
+  AWPBulletPrefab: {fileID: 5419313154980514706, guid: 70299f0a6d4c5914e8ceceb0b5969b51, type: 3}
+  RPGBulletPrefab: {fileID: 129258961937545329, guid: 89adb57174870f04399072a46b1443db, type: 3}
 --- !u!212 &1544444414
 SpriteRenderer:
   m_ObjectHideFlags: 0

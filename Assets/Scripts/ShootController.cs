@@ -9,7 +9,9 @@ public class ShootController : MonoBehaviour
     public GameObject NovaBulletPrefab;
     private int CurrentWeapon;
     private GameObject player;
-
+    public GameObject UZIBulletPrefab;
+    public GameObject AWPBulletPrefab;
+    public GameObject RPGBulletPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,17 +35,17 @@ public class ShootController : MonoBehaviour
         }
         if(CurrentWeapon == 3){
             if(Input.GetKeyDown("j")){
-            ShootDeagle();
+            ShootUZI();
             }
         }
         if(CurrentWeapon == 4){
             if(Input.GetKeyDown("j")){
-            ShootDeagle();
+            ShootAWP();
             }
         }
         if(CurrentWeapon == 5){
             if(Input.GetKeyDown("j")){
-            ShootDeagle();
+            ShootRPG();
             }
         }
         
@@ -55,5 +57,14 @@ public class ShootController : MonoBehaviour
 
     void ShootNova(){
         Instantiate(NovaBulletPrefab, firePoint.position, firePoint.rotation);
+    }
+    void ShootUZI(){
+        Instantiate(UZIBulletPrefab, firePoint.position, firePoint.rotation);
+    }
+    void ShootAWP(){
+        Instantiate(AWPBulletPrefab, firePoint.position, firePoint.rotation);
+    }
+    void ShootRPG(){
+        Instantiate(RPGBulletPrefab, firePoint.position, firePoint.rotation);
     }
 }
