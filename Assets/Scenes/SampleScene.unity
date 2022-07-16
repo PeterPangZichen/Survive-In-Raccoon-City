@@ -699,11 +699,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 696604715617806614, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
       propertyPath: m_Size.y
-      value: 0.102753
+      value: 0.14904387
       objectReference: {fileID: 0}
     - target: {fileID: 696604715617806614, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
       propertyPath: m_Offset.y
-      value: -0.09362348
+      value: -0.070478044
       objectReference: {fileID: 0}
     - target: {fileID: 5602893457258107372, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
       propertyPath: m_Name
@@ -1018,7 +1018,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1544444412}
-  bulletPrefab: {fileID: 7775853212608063987, guid: 3b17b6cd31d1e441488c22508f04bd8f, type: 3}
+  DeagleBulletPrefab: {fileID: 7775853212608063987, guid: 3b17b6cd31d1e441488c22508f04bd8f, type: 3}
+  NovaBulletPrefab: {fileID: 3559885796835956721, guid: f217ccdd0bf09824aa5d7755b922f09e, type: 3}
 --- !u!212 &1544444414
 SpriteRenderer:
   m_ObjectHideFlags: 0

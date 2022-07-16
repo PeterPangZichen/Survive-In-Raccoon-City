@@ -5,24 +5,55 @@ using UnityEngine;
 public class ShootController : MonoBehaviour
 {
     public Transform firePoint;
-    public GameObject bulletPrefab;
+    public GameObject DeagleBulletPrefab;
+    public GameObject NovaBulletPrefab;
+    private int CurrentWeapon;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
+        CurrentWeapon = player.GetComponent<PlayerController>().GetCurrentWeapon();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("j")){
-            Shoot();
-            //Debug.Log("Keydown J");
+        CurrentWeapon = player.GetComponent<PlayerController>().GetCurrentWeapon();
+        if(CurrentWeapon == 1){
+            if(Input.GetKeyDown("j")){
+            ShootDeagle();
+            }
         }
+        if(CurrentWeapon == 2){
+            if(Input.GetKeyDown("j")){
+            ShootNova();
+            }
+        }
+        if(CurrentWeapon == 3){
+            if(Input.GetKeyDown("j")){
+            ShootDeagle();
+            }
+        }
+        if(CurrentWeapon == 4){
+            if(Input.GetKeyDown("j")){
+            ShootDeagle();
+            }
+        }
+        if(CurrentWeapon == 5){
+            if(Input.GetKeyDown("j")){
+            ShootDeagle();
+            }
+        }
+        
     }
 
-    void Shoot(){
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    void ShootDeagle(){
+        Instantiate(DeagleBulletPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    void ShootNova(){
+        Instantiate(NovaBulletPrefab, firePoint.position, firePoint.rotation);
     }
 }

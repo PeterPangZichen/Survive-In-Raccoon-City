@@ -10,6 +10,8 @@ public class BulletController : MonoBehaviour
     private GameObject Player;
 
     private bool playerfacedright = true;
+    private int CurrentWeapon;
+    private int cnt = 0;
 
 
     // Start is called before the first frame update
@@ -17,6 +19,7 @@ public class BulletController : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         playerfacedright = Player.GetComponent<PlayerController>().GetfaceRightState();
+        CurrentWeapon = Player.GetComponent<PlayerController>().GetCurrentWeapon();
         if( playerfacedright ) bulletRigidBody.velocity = transform.right * speed;
         else bulletRigidBody.velocity = transform.right * -speed;
     }
@@ -24,7 +27,10 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        cnt += 1;
+        if(cnt > 60 && CurrentWeapon == 2){
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other){

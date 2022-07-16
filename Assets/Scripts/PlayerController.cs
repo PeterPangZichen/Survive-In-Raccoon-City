@@ -67,6 +67,10 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public int GetCurrentWeapon(){
+        return CurrentWeapon;
+    }
+
     private Vector3 WeaponPosition = new Vector3(0f,0f,0f);
     private Vector3 FirePointPosition = new Vector3(0f,0f,0f);
     private Vector3 WeaponScale = new Vector3(0f,0f,0f);
