@@ -1299,7 +1299,7 @@ PrefabInstance:
     - target: {fileID: -7375687816031896277, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ede2563cc4353c04d869961b73de1f5a, type: 3}
+      objectReference: {fileID: 21300000, guid: 61bdbb19e132bc1479b0d958b358ab2b, type: 3}
     - target: {fileID: -7375687816031896277, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -1320,8 +1320,24 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.070478044
       objectReference: {fileID: 0}
+    - target: {fileID: 696604715617806614, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696604715617806614, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 696604715617806614, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.17
+      objectReference: {fileID: 0}
     - target: {fileID: 5602893457258107372, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
       propertyPath: m_Name
+      value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602893457258107372, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
+      propertyPath: m_TagString
       value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 6780584601520549716, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
@@ -2049,7 +2065,11 @@ MonoBehaviour:
   AWPSprite: {fileID: 21300000, guid: 269058d63a6f28943ad91cc13daa1602, type: 3}
   RPGSprite: {fileID: 21300000, guid: 87fe9dcd16def4647aa2c87152d718cb, type: 3}
   runSpeed: 10
-  HP: 100
+  health: 100
+  fullhealth: 100
+  HPbar: {fileID: 2141378701}
+  PlayerHpBar: {fileID: 2141378702}
+  HpBarObject: {fileID: 2141378700}
 --- !u!1 &1760725819
 GameObject:
   m_ObjectHideFlags: 0

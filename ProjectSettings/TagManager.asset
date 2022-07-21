@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PoliceStation
+  - Zombie
   layers:
   - Default
   - TransparentFX

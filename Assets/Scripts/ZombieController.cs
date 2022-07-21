@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ZombieController : MonoBehaviour
 {
+    // private SpriteRenderer zombieSprite;
+
     // Movement
     private float originalX;
     // private float maxOffset = 5.0f;
@@ -42,6 +44,7 @@ public class ZombieController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // zombieSprite = GetComponent<SpriteRenderer>();
         enemyBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         // get the starting position

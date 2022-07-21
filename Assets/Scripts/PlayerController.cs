@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -21,7 +22,11 @@ public class PlayerController : MonoBehaviour
     public Sprite RPGSprite;
 
     public float runSpeed = 10.0f;
-    public int HP = 100;
+    public int health = 50;
+    public int fullhealth = 50;
+    public Transform HPbar;
+    public Slider PlayerHpBar;
+    public GameObject HpBarObject;
     
     public bool GetfaceRightState(){
         return faceRightState;
@@ -152,11 +157,31 @@ public class PlayerController : MonoBehaviour
             Debug.Log(CurrentWeapon);
             ChangeCurrentWeapon((CurrentWeapon%5)+1);
         }
+
+        // HP bar follow the player
+        HPbar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 2f);
         
     }
 
     private void FixedUpdate()
     {
         playerBody.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);   
+    }
+
+    void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.CompareTag("Zombie")) {
+            takeCollisionDamage(10);
+        }
+    }
+
+    public void takeCollisionDamage(int damage){
+        health -= damage;
+        float hpbar = (float)health/(float)fullhealth;
+        PlayerHpBar.value = hpbar;
+        if(health<=0){
+            // Destroy(gameObject);
+            // Destroy(HpBarObject);
+            Time.timeScale = 0; // pause the game
+        }
     }
 }
