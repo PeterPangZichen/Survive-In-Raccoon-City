@@ -15,6 +15,7 @@ public class ShootController : MonoBehaviour
     private float[] firerate = new float[] {0.2f, 0.4f, 0.1f, 1f, 3f };
     private float CurrentFirerate = 0f;
     private float LastShotTime = 0f;
+    private bool faceRightState = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class ShootController : MonoBehaviour
     void Update()
     {
         CurrentWeapon = player.GetComponent<PlayerController>().GetCurrentWeapon();
+        faceRightState = player.GetComponent<PlayerController>().GetfaceRightState();
         CurrentFirerate = firerate[CurrentWeapon-1];
         if(Input.GetKeyDown("j") && Time.time > LastShotTime + CurrentFirerate){
             Debug.Log(CurrentWeapon);

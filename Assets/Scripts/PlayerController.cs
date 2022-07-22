@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
             WeaponObject.transform.localScale = scale;
             Vector3 scale2 = FirePointObject.transform.localScale;
             scale2.x *= -1;
-            FirePointObject.transform.localScale = scale;
+            FirePointObject.transform.localScale = scale2;
             GetPositionForWeapon();
             WeaponObject.transform.localPosition = WeaponPosition;
             FirePointObject.transform.localPosition = FirePointPosition;

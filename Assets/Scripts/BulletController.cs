@@ -20,8 +20,16 @@ public class BulletController : MonoBehaviour
         Player = GameObject.Find("Player");
         playerfacedright = Player.GetComponent<PlayerController>().GetfaceRightState();
         CurrentWeapon = Player.GetComponent<PlayerController>().GetCurrentWeapon();
-        if( playerfacedright ) bulletRigidBody.velocity = transform.right * speed;
-        else bulletRigidBody.velocity = transform.right * -speed;
+        if( playerfacedright ){
+            bulletRigidBody.velocity = transform.right * speed; 
+        }
+        else 
+        {
+            bulletRigidBody.velocity = transform.right * -speed;
+            Vector3 scale2 = gameObject.transform.localScale;
+            scale2.x *= -1;
+            gameObject.transform.localScale = scale2;
+        }
     }
 
     private int getDamageByWeapon(){
@@ -56,7 +64,7 @@ public class BulletController : MonoBehaviour
         ZombieController zombieController = other.GetComponent<ZombieController>();
         if(zombieController!=null){
             zombieController.takeDamage(getDamageByWeapon());
-            Destroy(gameObject);
+            if(CurrentWeapon!=4) Destroy(gameObject);
         }
     }
 
