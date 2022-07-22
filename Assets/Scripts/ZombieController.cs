@@ -13,6 +13,7 @@ public class ZombieController : MonoBehaviour
     // private float enemyPatroltime = 5.0f;
     // private int moveRight = -1;
     private Vector2 velocity;
+    private bool isBouncing;
 
     // Damage
     public int health = 20;
@@ -21,7 +22,10 @@ public class ZombieController : MonoBehaviour
     public float MAX_Y_SPEED = 0.2f;
     public float Attack_range_x = 0.01f;
     public float Attack_range_y = 0.01f;
-    public GameObject target;
+    private GameObject target;
+    private GameObject player;
+    private GameObject baseObject;
+    private float distanceToPlayer;
     public Transform HPbar;
     public Slider ZombieHpBar;
     public GameObject HpBarObject;
@@ -49,10 +53,23 @@ public class ZombieController : MonoBehaviour
         animator = GetComponent<Animator>();
         // get the starting position
         originalX = transform.position.x;
+        player = GameObject.Find("Player");
+        baseObject = GameObject.Find("Base");
+        // define target as the base
+        target = baseObject;
+        
+        distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         ComputeVelocity();
     }
     
     void ComputeVelocity(){
+        distanceToPlayer = Vector2.Distance (transform.position, player.transform.position);
+        // Debug.Log("Distance with player: " + distanceToPlayer);
+        if (distanceToPlayer <= 5) {
+            target = player;
+        } else {
+            target = baseObject;
+        }
         velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - (enemyBody.position.y-1f));
         // Speed Control
         float distance = Mathf.Sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
@@ -61,6 +78,8 @@ public class ZombieController : MonoBehaviour
         else if(velocity.x<-MAX_X_SPEED) velocity.x=-MAX_X_SPEED;
         if(velocity.y>MAX_Y_SPEED) velocity.y=MAX_Y_SPEED;
         else if(velocity.y<-MAX_Y_SPEED) velocity.y=-MAX_Y_SPEED;
+
+        // Stops the zombie when too close???
         if(distance<2){
             velocity.x = 0f;
             velocity.y = 0f;
@@ -88,8 +107,12 @@ public class ZombieController : MonoBehaviour
         //     ComputeVelocity();
         //     MoveZombie();
         // }
+
         ComputeVelocity();
-        MoveZombie();
+        // Move zombie if no collision with other objects
+        if (!isBouncing) {
+            MoveZombie();
+        }
         // HP bar follow the zombie
         HPbar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 1.2f);
     }
@@ -102,5 +125,22 @@ public class ZombieController : MonoBehaviour
             Destroy(gameObject);
             Destroy(HpBarObject);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.CompareTag("Base")) {
+            float bounce = 6f; //amount of bouncing force to apply
+            enemyBody.AddForce(col.contacts[0].normal * bounce);
+            isBouncing = true;
+            Invoke("StopBounce", 0.3f);
+        }
+        if (col.gameObject.CompareTag("Player")) {
+            Debug.Log("Collide with player");
+        }
+    }
+
+    void StopBounce()
+    {
+        isBouncing = false;
     }
 }

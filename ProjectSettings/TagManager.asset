@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PoliceStation
   - Zombie
+  - Base
   layers:
   - Default
   - TransparentFX
