@@ -34,8 +34,8 @@ public class BaseController : MonoBehaviour
         float hpbar = (float)health/(float)fullhealth;
         BaseHpBar.value = hpbar;
         if(health<=0){
-            Destroy(gameObject);
-            Destroy(HpBarObject);
+            // Destroy(gameObject);
+            // Destroy(HpBarObject);
             Time.timeScale = 0; // pause the game
         }
     }

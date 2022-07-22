@@ -118,6 +118,7 @@ public class ZombieController : MonoBehaviour
     }
 
     public void takeDamage(int damage){
+        animator.SetTrigger("isHurt");
         health -= damage;
         float hpbar = (float)health/(float)fullhealth;
         ZombieHpBar.value = hpbar;
@@ -143,4 +144,5 @@ public class ZombieController : MonoBehaviour
     {
         isBouncing = false;
     }
+
 }
