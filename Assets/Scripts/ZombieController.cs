@@ -16,12 +16,12 @@ public class ZombieController : MonoBehaviour
     private bool isBouncing;
 
     // Damage
-    public int health = 20;
-    public int fullhealth = 20;
-    public float MAX_X_SPEED = 0.4f;
-    public float MAX_Y_SPEED = 0.2f;
-    public float Attack_range_x = 0.01f;
-    public float Attack_range_y = 0.01f;
+    private int health = 40;
+    private int fullhealth = 40;
+    private float MAX_X_SPEED = 0.4f;
+    private float MAX_Y_SPEED = 0.2f;
+    private float Attack_range_x = 0.01f;
+    private float Attack_range_y = 0.01f;
     private GameObject target;
     private GameObject player;
     private GameObject baseObject;
@@ -80,10 +80,10 @@ public class ZombieController : MonoBehaviour
         else if(velocity.y<-MAX_Y_SPEED) velocity.y=-MAX_Y_SPEED;
 
         // Stops the zombie when too close???
-        if(distance<2){
-            velocity.x = 0f;
-            velocity.y = 0f;
-        }
+        // if(distance<2){
+        //     velocity.x = 0f;
+        //     velocity.y = 0f;
+        // }
     }
 
     void MoveZombie(){
@@ -129,7 +129,7 @@ public class ZombieController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        if (col.gameObject.CompareTag("Base")) {
+        if (col.gameObject.CompareTag("Base") || col.gameObject.CompareTag("Player")) {
             float bounce = 6f; //amount of bouncing force to apply
             enemyBody.AddForce(col.contacts[0].normal * bounce);
             isBouncing = true;

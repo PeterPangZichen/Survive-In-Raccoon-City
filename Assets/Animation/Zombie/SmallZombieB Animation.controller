@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 27034e43520633644a2c8d7b841e0989, type: 2}
+  m_Motion: {fileID: 7400000, guid: 07b794ca66ba74afa92ba72658d76223, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c6ac96195da61824aa416caf04c9790e, type: 2}
+  m_Motion: {fileID: 7400000, guid: b3e31628e2e014ecbb892ab83a735f18, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -126,7 +126,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ec5798f1c9e6043e887c8b47d4c0349f, type: 2}
+  m_Motion: {fileID: 7400000, guid: efada2e6de03e439485c0af889769ef6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -166,7 +166,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Zombie Animation
+  m_Name: SmallZombieB Animation
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Distance

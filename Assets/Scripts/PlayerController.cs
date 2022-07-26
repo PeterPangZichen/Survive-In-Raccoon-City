@@ -22,11 +22,16 @@ public class PlayerController : MonoBehaviour
     public Sprite RPGSprite;
 
     public float runSpeed = 10.0f;
-    public int health = 50;
-    public int fullhealth = 50;
+    public int health = 100;
+    public int fullhealth = 100;
     public Transform HPbar;
     public Slider PlayerHpBar;
     public GameObject HpBarObject;
+    // public Text hpText;
+    // public Text dayText;
+    // public Text weaponText;
+    // private string weaponNameString = "Deagle";
+    // private int dayCount = 1;
     
     public bool GetfaceRightState(){
         return faceRightState;
@@ -43,6 +48,10 @@ public class PlayerController : MonoBehaviour
         WeaponObject = gameObject.transform.GetChild(1).gameObject;     
         FirePointObject = gameObject.transform.GetChild(0).gameObject;    
         CurrentWeapon = 1;
+
+        // dayText.text = "Day " + dayCount.ToString();
+        // hpText.text = "HP " + health.ToString();
+        // weaponText.text = "Weapon " + weaponNameString;
     }
 
     public void ChangeCurrentWeapon(int weapon){
@@ -52,19 +61,25 @@ public class PlayerController : MonoBehaviour
         // todo: change the fire point of each weapon;
         if(CurrentWeapon == 1){
             weaponSpriteRenderer.sprite = deagleSprite;
+            // weaponNameString = "Deagle";
         }
         if(CurrentWeapon == 2){
             weaponSpriteRenderer.sprite = novaSprite;
+            // weaponNameString = "NOVA";
         }
         if(CurrentWeapon == 3){
             weaponSpriteRenderer.sprite = uziSprite;
+            // weaponNameString = "UZI";
         }
         if(CurrentWeapon == 4){
             weaponSpriteRenderer.sprite = AWPSprite;
+            // weaponNameString = "AWP";
         }
         if(CurrentWeapon == 5){
             weaponSpriteRenderer.sprite = RPGSprite;
+            // weaponNameString = "RPG";
         }
+        // weaponText.text = weaponNameString;
         GetPositionForWeapon();
         WeaponObject.transform.localScale = WeaponScale;
         WeaponObject.transform.localPosition = WeaponPosition;
@@ -176,6 +191,7 @@ public class PlayerController : MonoBehaviour
 
     public void takeCollisionDamage(int damage){
         health -= damage;
+        // hpText.text = "HP " + health.ToString();
         float hpbar = (float)health/(float)fullhealth;
         PlayerHpBar.value = hpbar;
         if(health<=0){
