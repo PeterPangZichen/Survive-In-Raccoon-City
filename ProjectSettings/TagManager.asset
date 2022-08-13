@@ -7,6 +7,9 @@ TagManager:
   - PoliceStation
   - Zombie
   - Base
+  - Obstacle
+  - HouseBottom
+  - HouseSide
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,10 @@ public class ZombieController : MonoBehaviour
     private Vector2 velocity;
     private bool isBouncing;
 
+    private bool pushRight = false;
+    private bool pushLeft = false;
+    private bool pushUp = false;
+
     // Damage
     private int health = 40;
     private int fullhealth = 40;
@@ -26,9 +30,9 @@ public class ZombieController : MonoBehaviour
     private GameObject player;
     private GameObject baseObject;
     private float distanceToPlayer;
-    public Transform HPbar;
-    public Slider ZombieHpBar;
-    public GameObject HpBarObject;
+    // public Transform HPbar;
+    // public Slider ZombieHpBar;
+    // public GameObject HpBarObject;
     Animator animator;
 
     private Rigidbody2D enemyBody;
@@ -70,10 +74,22 @@ public class ZombieController : MonoBehaviour
         } else {
             target = baseObject;
         }
-        velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - (enemyBody.position.y-1f));
+
+        if (pushRight) {
+            velocity = new Vector2(MAX_X_SPEED, MAX_Y_SPEED);
+        } else if (pushUp) {
+            velocity = new Vector2(0, MAX_Y_SPEED);
+        } else {
+            velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - (enemyBody.position.y-1f));
+        }
+
+        // velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - (enemyBody.position.y-1f));
+        
         // Speed Control
         float distance = Mathf.Sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
         animator.SetFloat("Distance", distance);
+
+        // Limit Speed
         if(velocity.x>MAX_X_SPEED) velocity.x=MAX_X_SPEED;
         else if(velocity.x<-MAX_X_SPEED) velocity.x=-MAX_X_SPEED;
         if(velocity.y>MAX_Y_SPEED) velocity.y=MAX_Y_SPEED;
@@ -114,29 +130,52 @@ public class ZombieController : MonoBehaviour
             MoveZombie();
         }
         // HP bar follow the zombie
-        HPbar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 1.2f);
+        // HPbar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 1.2f);
     }
 
     public void takeDamage(int damage){
         animator.SetTrigger("isHurt");
         health -= damage;
-        float hpbar = (float)health/(float)fullhealth;
-        ZombieHpBar.value = hpbar;
+        // float hpbar = (float)health/(float)fullhealth;
+        // ZombieHpBar.value = hpbar;
         if(health<=0){
             Destroy(gameObject);
-            Destroy(HpBarObject);
+            // Destroy(HpBarObject);
         }
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        if (col.gameObject.CompareTag("Base") || col.gameObject.CompareTag("Player")) {
-            float bounce = 6f; //amount of bouncing force to apply
+        float bounce = 6f;
+        if (col.gameObject.CompareTag("Base") || col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Obstacle")) {
+             //amount of bouncing force to apply
             enemyBody.AddForce(col.contacts[0].normal * bounce);
             isBouncing = true;
             Invoke("StopBounce", 0.3f);
         }
-        if (col.gameObject.CompareTag("Player")) {
-            Debug.Log("Collide with player");
+    }
+
+    void OnTriggerStay2D(Collider2D col) {
+        // Debug.Log("GameObject2 collided with " + col.name);
+        if (col.CompareTag("HouseBottom")) {
+            Debug.Log("Zombie entering house bottom");
+            pushRight = true;
+        }
+        if (col.CompareTag("HouseSide")) {
+            Debug.Log("Zombie entering house side");
+            pushUp = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        // Reset pushing state to false
+        if (col.CompareTag("HouseBottom")) {
+            Debug.Log("Zombie leaves house bottom");
+            pushRight = false;
+        }
+        if (col.CompareTag("HouseSide")) {
+            Debug.Log("Zombie leaves house side");
+            pushUp = false;
         }
     }
 
