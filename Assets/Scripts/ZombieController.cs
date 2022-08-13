@@ -38,6 +38,10 @@ public class ZombieController : MonoBehaviour
     private Rigidbody2D enemyBody;
     private bool isFacingRight = true;
 
+    public AudioSource zombienoise;
+    // public AudioClip noise;
+    //public bool testing;
+
     void Flip()    
       {
           isFacingRight = !isFacingRight;
@@ -55,12 +59,17 @@ public class ZombieController : MonoBehaviour
         // zombieSprite = GetComponent<SpriteRenderer>();
         enemyBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        zombienoise = GetComponent<AudioSource>();
+        //zombienoise.PlayOneShot(noice,0.5f);
         // get the starting position
         originalX = transform.position.x;
         player = GameObject.Find("Player");
         baseObject = GameObject.Find("Base");
         // define target as the base
         target = baseObject;
+
+        //testing = true;
         
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         ComputeVelocity();
@@ -111,7 +120,12 @@ public class ZombieController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        distanceToPlayer = Vector2.Distance (transform.position, player.transform.position);
+        if (distanceToPlayer <= 5) {
+            zombienoise.Play();
+        } 
+
         // Movement
         // if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
         // {

@@ -17,10 +17,14 @@ public class ShootController : MonoBehaviour
     private float LastShotTime = 0f;
     private bool faceRightState = true;
     // Start is called before the first frame update
+
+    public AudioSource shotsound;
+    
     void Start()
     {
         player = GameObject.Find("Player");
         CurrentWeapon = player.GetComponent<PlayerController>().GetCurrentWeapon();
+        shotsound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +34,7 @@ public class ShootController : MonoBehaviour
         faceRightState = player.GetComponent<PlayerController>().GetfaceRightState();
         CurrentFirerate = firerate[CurrentWeapon-1];
         if(Input.GetKeyDown("j") && Time.time > LastShotTime + CurrentFirerate){
+            shotsound.Play();
             Debug.Log(CurrentWeapon);
             LastShotTime = Time.time;
             if(CurrentWeapon == 1){ // shoot 3 per sec
