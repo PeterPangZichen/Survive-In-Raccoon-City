@@ -16,8 +16,8 @@ public class ZombieController : MonoBehaviour
     private bool isBouncing;
 
     private bool pushRight = false;
-    private bool pushLeft = false;
     private bool pushUp = false;
+    private bool guideZombie = false;
 
     // Damage
     private int health = 40;
@@ -78,11 +78,15 @@ public class ZombieController : MonoBehaviour
     void ComputeVelocity(){
         distanceToPlayer = Vector2.Distance (transform.position, player.transform.position);
         // Debug.Log("Distance with player: " + distanceToPlayer);
-        if (distanceToPlayer <= 5) {
-            target = player;
-        } else {
-            target = baseObject;
-        }
+        if (!guideZombie) {
+            // If guideZombie==true, targetting the corner of the house
+            // Else, set target to player or base
+            if (distanceToPlayer <= 5) {
+                target = player;
+            } else {
+                target = baseObject;
+            }
+        } 
 
         if (pushRight) {
             velocity = new Vector2(MAX_X_SPEED, MAX_Y_SPEED);
@@ -169,14 +173,22 @@ public class ZombieController : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D col) {
+        // Vector2 bottomRightCorner = new Vector2(col.transform.position.x - (col.spriteWidth / 2), col.transform.position.y - (col.spriteHeight / 2));
+        // Vector2 topRightCorner = new Vector2(col.transform.position.x - (col.spriteWidth / 2), col.transform.position.y + (col.spriteHeight / 2));
         // Debug.Log("GameObject2 collided with " + col.name);
         if (col.CompareTag("HouseBottom")) {
             Debug.Log("Zombie entering house bottom");
             pushRight = true;
+            // guideZombie = true;
+            // target = bottomRightCornerObject...
+            // target = bottomRightCorner;
         }
         if (col.CompareTag("HouseSide")) {
             Debug.Log("Zombie entering house side");
             pushUp = true;
+            // guideZombie = true;
+            // target = topRightCornerObject...
+            // target = topRightCorner;
         }
     }
 
@@ -186,10 +198,14 @@ public class ZombieController : MonoBehaviour
         if (col.CompareTag("HouseBottom")) {
             Debug.Log("Zombie leaves house bottom");
             pushRight = false;
+            // guideZombie = false;
+            // target = 
         }
         if (col.CompareTag("HouseSide")) {
             Debug.Log("Zombie leaves house side");
             pushUp = false;
+            // guideZombie = false;
+            // target = 
         }
     }
 
