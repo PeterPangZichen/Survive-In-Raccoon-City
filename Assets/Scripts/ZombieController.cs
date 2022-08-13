@@ -38,6 +38,9 @@ public class ZombieController : MonoBehaviour
     private Rigidbody2D enemyBody;
     private bool isFacingRight = true;
 
+    public GameObject milkPrefab;
+    public GameObject stimPrefab;
+
     public AudioSource zombienoise;
     // public AudioClip noise;
     //public bool testing;
@@ -155,6 +158,10 @@ public class ZombieController : MonoBehaviour
         if(health<=0){
             Destroy(gameObject);
             // Destroy(HpBarObject);
+            var r = new System.Random();
+
+            GameObject consumablePrefab = r.Next(1, 7) <= 3 ? milkPrefab : stimPrefab;
+            Instantiate(consumablePrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         }
     }
 
