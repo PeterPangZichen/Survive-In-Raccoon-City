@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stim : MonoBehaviour, ConsumableInterface {
+public class Choco : MonoBehaviour, ConsumableInterface {
     private GameObject player;
 
 
@@ -14,10 +14,10 @@ public class Stim : MonoBehaviour, ConsumableInterface {
 
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.CompareTag("Player")){
-            player = GameObject.Find("Player");
-            player.GetComponent<PlayerController>().runSpeed += 0.1f;
-            Debug.Log(player.GetComponent<PlayerController>().runSpeed);
-            
+            // player = GameObject.Find("Player");
+            // player.GetComponent<PlayerController>().takeCollisionDamage(-20);
+            // Debug.Log(player.GetComponent<PlayerController>().health);
+
             Destroy(gameObject);
         }
     }
