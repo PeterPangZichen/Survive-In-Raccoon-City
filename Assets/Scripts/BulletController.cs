@@ -46,7 +46,7 @@ public class BulletController : MonoBehaviour
             return 20;
         }
         if(CurrentWeapon == 5){
-            return 50;
+            return 100;
         }
         return 0;
     }
@@ -65,6 +65,11 @@ public class BulletController : MonoBehaviour
         if(zombieController!=null){
             zombieController.takeDamage(getDamageByWeapon());
             if(CurrentWeapon!=4) Destroy(gameObject);
+            if(CurrentWeapon==5){
+                //gameObject.animation.Play("explode");
+                //Destroytimer();
+            }
+            
         }
     }
 
