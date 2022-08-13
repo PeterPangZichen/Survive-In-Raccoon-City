@@ -27,6 +27,7 @@ public class ZombieController : MonoBehaviour
     private float Attack_range_x = 0.01f;
     private float Attack_range_y = 0.01f;
     private GameObject target;
+    private GameObject prevTarget;
     private GameObject player;
     private GameObject baseObject;
     private float distanceToPlayer;
@@ -71,6 +72,7 @@ public class ZombieController : MonoBehaviour
         baseObject = GameObject.Find("Base");
         // define target as the base
         target = baseObject;
+        prevTarget = baseObject;
 
         //testing = true;
         
@@ -89,6 +91,13 @@ public class ZombieController : MonoBehaviour
             } else {
                 target = baseObject;
             }
+        }
+
+        prevTarget = target;
+        if (distanceToPlayer <= 5) {
+            target = player;
+        } else {
+            target = prevTarget;
         }
 
         // if (pushRight) {
