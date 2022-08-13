@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public Transform HPbar;
     public Slider PlayerHpBar;
     public GameObject HpBarObject;
+    public int level = 5;
     // public Text hpText;
     // public Text dayText;
     // public Text weaponText;
@@ -170,7 +171,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("p")){
             Debug.Log("Keydown P");
             Debug.Log(CurrentWeapon);
-            ChangeCurrentWeapon((CurrentWeapon%5)+1);
+            ChangeCurrentWeapon((CurrentWeapon%level)+1);
         }
 
         // HP bar follow the player
