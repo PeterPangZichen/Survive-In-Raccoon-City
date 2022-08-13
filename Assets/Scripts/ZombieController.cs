@@ -89,17 +89,17 @@ public class ZombieController : MonoBehaviour
             } else {
                 target = baseObject;
             }
-        } 
-
-        if (pushRight) {
-            velocity = new Vector2(MAX_X_SPEED, MAX_Y_SPEED);
-        } else if (pushUp) {
-            velocity = new Vector2(0, MAX_Y_SPEED);
-        } else {
-            velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - (enemyBody.position.y-1f));
         }
 
-        // velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - (enemyBody.position.y-1f));
+        // if (pushRight) {
+        //     velocity = new Vector2(MAX_X_SPEED, MAX_Y_SPEED);
+        // } else if (pushUp) {
+        //     velocity = new Vector2(0, MAX_Y_SPEED);
+        // } else {
+        //     velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - (enemyBody.position.y-1f));
+        // }
+
+        velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - (enemyBody.position.y-1f));
         
         // Speed Control
         float distance = Mathf.Sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
@@ -186,15 +186,34 @@ public class ZombieController : MonoBehaviour
         if (col.CompareTag("HouseBottom")) {
             Debug.Log("Zombie entering house bottom");
             pushRight = true;
-            // guideZombie = true;
-            // target = bottomRightCornerObject...
+
+            guideZombie = true;
+            // if (col.transform.Find("BottomRight") != null) {
+            //     Debug.Log("Find bottom right corner");
+            // }
+
+            GameObject colObject = col.transform.parent.gameObject;
+
+            target = colObject.transform.Find("BottomRight").gameObject;
+
+            Debug.Log("Target Name: " + target.name);
             // target = bottomRightCorner;
         }
         if (col.CompareTag("HouseSide")) {
             Debug.Log("Zombie entering house side");
             pushUp = true;
-            // guideZombie = true;
-            // target = topRightCornerObject...
+
+            guideZombie = true;
+            // if (col.transform.Find("TopRight") != null) {
+            //     Debug.Log("Find top right corner");
+            // }
+
+            GameObject colObject = col.transform.parent.gameObject;
+
+            target = colObject.transform.Find("TopRight").gameObject;
+
+            Debug.Log("Target Name: " + target.name);
+            // Debug.Log("col.gameObject.name");
             // target = topRightCorner;
         }
     }
@@ -205,14 +224,12 @@ public class ZombieController : MonoBehaviour
         if (col.CompareTag("HouseBottom")) {
             Debug.Log("Zombie leaves house bottom");
             pushRight = false;
-            // guideZombie = false;
-            // target = 
+            guideZombie = false;
         }
         if (col.CompareTag("HouseSide")) {
             Debug.Log("Zombie leaves house side");
             pushUp = false;
-            // guideZombie = false;
-            // target = 
+            guideZombie = false;
         }
     }
 
