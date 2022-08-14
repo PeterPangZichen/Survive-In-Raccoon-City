@@ -162,8 +162,11 @@ public class ZombieController : MonoBehaviour
             // Destroy(HpBarObject);
             var r = new System.Random();
 
-            GameObject consumablePrefab = r.Next(1, 7) <= 3 ? milkPrefab : stimPrefab;
-            Instantiate(consumablePrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+            if (r.Next(1, 5) <= 1) {
+                GameObject consumablePrefab = r.Next(1, 7) <= 3 ? milkPrefab : stimPrefab;
+                Instantiate(consumablePrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+            }
+            
         }
     }
 
