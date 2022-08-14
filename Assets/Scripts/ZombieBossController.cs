@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class ZombieController : MonoBehaviour
+public class ZombieBossController : MonoBehaviour
 {
     // private SpriteRenderer zombieSprite;
 
@@ -17,9 +17,9 @@ public class ZombieController : MonoBehaviour
     private bool guideZombie = false;
 
     // Damage
-    public bool is_boss = false;
-    private int health = 40;
-    private int fullhealth = 40;
+    public bool isboss = false;
+    private int health = 1000;
+    public int fullhealth = 1000;
     public float MAX_X_SPEED = 0.4f;
     public float MAX_Y_SPEED = 0.2f;
     private float Attack_range_x = 0.01f;
@@ -28,12 +28,10 @@ public class ZombieController : MonoBehaviour
     private GameObject prevTarget;
     private GameObject player;
     private GameObject baseObject;
-    private Transform firePoint;
     private float distanceToPlayer;
-    public Transform HPbar;
-    public Slider ZombieHpBar;
-    public GameObject HpBarObject;
-    public GameObject ZombieBulletPrefab;
+    // public Transform HPbar;
+    // public Slider ZombieHpBar;
+    // public GameObject HpBarObject;
     Animator animator;
 
     private Rigidbody2D enemyBody;
@@ -43,13 +41,8 @@ public class ZombieController : MonoBehaviour
     public GameObject stimPrefab;
 
     public AudioSource zombienoise;
-    private float CurrentFirerate = 0.1f;
-    private float LastShotTime = 0f;
     // public AudioClip noise;
     //public bool testing;
-    public bool GetfaceRightState(){
-        return isFacingRight;
-    }
 
     void Flip()    
       {
@@ -58,14 +51,7 @@ public class ZombieController : MonoBehaviour
           Vector3 theScale = transform.localScale;
           theScale.x *= -1;
           transform.localScale = theScale;
-        
-          if(is_boss){
-            int face = -1;
-            if(isFacingRight) face = -1;
-            Vector3 scale = firePoint.localScale;
-            scale.x *= -1;
-            firePoint.localScale = scale;
-          }
+  
           // Flip collider over the x-axis
           // center.x = -center.x;
       }
@@ -90,12 +76,6 @@ public class ZombieController : MonoBehaviour
         
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         ComputeVelocity();
-
-        if(is_boss){
-            health = 1000;
-            fullhealth = 1000;
-            firePoint = GameObject.Find("ZombieFirePoint").transform;
-        }
     }
     
     void ComputeVelocity(){
@@ -111,13 +91,8 @@ public class ZombieController : MonoBehaviour
             }
         }
 
-        prevTarget = target;
-        if (distanceToPlayer <= 5 || is_boss == true) {
-            target = player;
-        } else {
-            target = prevTarget;
-        }
-
+        target = player;
+        
         velocity = new Vector2(target.transform.position.x - enemyBody.position.x, target.transform.position.y - (enemyBody.position.y-1f));
         
         // Speed Control
@@ -170,29 +145,17 @@ public class ZombieController : MonoBehaviour
             MoveZombie();
         }
         // HP bar follow the zombie
-        if(is_boss){
-            HPbar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 1.8f);
-            if(Time.time > LastShotTime + CurrentFirerate){
-                Instantiate(ZombieBulletPrefab, firePoint.position, firePoint.rotation);
-                firePoint.Rotate(0f,0f,15f,Space.Self);
-                LastShotTime = Time.time;
-            }   
-        }
-            
+        // HPbar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 1.2f);
     }
 
     public void takeDamage(int damage){
         animator.SetTrigger("isHurt");
         health -= damage;
-        if(is_boss){
-            float hpbar = (float)health/(float)fullhealth;
-            ZombieHpBar.value = hpbar;
-        }
-        
+        // float hpbar = (float)health/(float)fullhealth;
+        // ZombieHpBar.value = hpbar;
         if(health<=0){
             Destroy(gameObject);
-            if(is_boss)
-                Destroy(HpBarObject);
+            // Destroy(HpBarObject);
             var r = new System.Random();
 
             if (r.Next(1, 5) <= 1) {
