@@ -9,13 +9,9 @@ public class MenuData : ScriptableObject
     [Multiline]
     public string DeveloperDescription = "";
 #endif
-    private int _difficulty = 0;
-    public int difficulty{
-        get{
-            return _difficulty;
-        }
-        set{
-            _difficulty = value;
-        }
-    }
+    // Difficulty
+    public int difficulty = 0;
+
+    // Level pass
+    public bool[] levelPass = new bool[]{true, false, false, false, false};
 }
