@@ -6,12 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/IntroScene.unity
+    guid: 4aaa878011c3246d7a14c8b60bfa3da7
+  - enabled: 1
+    path: Assets/Scenes/StartScene1.unity
+    guid: 7ee826393f5f74fcd88e59aaa57d7271
+  - enabled: 1
+    path: Assets/Scenes/StartScene2.unity
+    guid: 9fb7e452a951342b389e978380f85953
+  - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: 86c70ca81fbcd4b39bf11fe2331dc8c7
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: a26a8060700294ced835aba35852bf5d
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: 8781c0878e0514fe1b49cdd448b7bd7d
   - enabled: 1
-    path: Assets/Scenes/MenuScene.unity
-    guid: 86c70ca81fbcd4b39bf11fe2331dc8c7
+    path: Assets/Scenes/MainScene.unity
+    guid: 88ffde36310d0449fa737c8deb2543b6
+  - enabled: 1
+    path: Assets/Scenes/SuccessScene.unity
+    guid: e05c7130a6b4746549dc55a089265e19
+  - enabled: 1
+    path: Assets/Scenes/EndScene1.unity
+    guid: f20873931173a4c36bc18b6ab4d7c0f1
+  - enabled: 1
+    path: Assets/Scenes/EndScene2.unity
+    guid: 51a6399fa46c44ce4a10d45d716cfcc3
   m_configObjects: {}

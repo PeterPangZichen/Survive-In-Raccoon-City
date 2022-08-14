@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
         FirePointObject = gameObject.transform.GetChild(0).gameObject;    
         CurrentWeapon = 1;
         level = MenuData.difficulty+1;
-        Debug.Log(level);
 
         // dayText.text = "Day " + dayCount.ToString();
         // hpText.text = "HP " + health.ToString();

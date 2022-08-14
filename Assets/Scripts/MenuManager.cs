@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public int NumOfLevels;
     public Sprite[] Levels;
+    public AudioSource audio;
 
     public MenuData MenuScript;
     public GameObject LockedCover;
@@ -28,6 +29,7 @@ public class MenuManager : MonoBehaviour
                 currentLevel++;
                 LevelSprite.sprite = Levels[currentLevel-1];
                 LockedCover.SetActive(!MenuScript.levelPass[currentLevel-1]);
+                audio.Play();
             }
         };
         if(Input.GetKeyDown("a")){
@@ -35,12 +37,18 @@ public class MenuManager : MonoBehaviour
                 currentLevel--;
                 LevelSprite.sprite = Levels[currentLevel-1];
                 LockedCover.SetActive(!MenuScript.levelPass[currentLevel-1]);
+                audio.Play();
             }
         };
         if(Input.GetKeyDown("space")){
             if(MenuScript.levelPass[currentLevel-1]){
                 MenuScript.difficulty = currentLevel-1;
-                SceneManager.LoadScene("MainScene");
+                if(currentLevel-1!=0){
+                    SceneManager.LoadScene("TutorialScene");
+                }else{
+                    SceneManager.LoadScene("MainScene");
+                }
+                audio.Play();
             }
         };
     }
