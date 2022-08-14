@@ -52,9 +52,7 @@ public class ShootController : MonoBehaviour
             if(CurrentWeapon == 5){ // shoot 0.33 per sec
                 ShootRPG();
             }
-        }
-        
-        
+        }  
     }
 
     void ShootDeagle(){

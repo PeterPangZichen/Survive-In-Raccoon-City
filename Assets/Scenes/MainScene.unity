@@ -6840,6 +6840,7 @@ MonoBehaviour:
   PlayerHpBar: {fileID: 2141378702}
   HpBarObject: {fileID: 2141378700}
   level: 5
+  MenuData: {fileID: 11400000, guid: e3ec6f812f0934866adeb653e11973c4, type: 2}
 --- !u!1 &1760725819
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public Slider PlayerHpBar;
     public GameObject HpBarObject;
     public int level = 5;
+    public MenuData MenuData;
     // public Text hpText;
     // public Text dayText;
     // public Text weaponText;
@@ -50,6 +51,8 @@ public class PlayerController : MonoBehaviour
         WeaponObject = gameObject.transform.GetChild(1).gameObject;     
         FirePointObject = gameObject.transform.GetChild(0).gameObject;    
         CurrentWeapon = 1;
+        level = MenuData.difficulty+1;
+        Debug.Log(level);
 
         // dayText.text = "Day " + dayCount.ToString();
         // hpText.text = "HP " + health.ToString();

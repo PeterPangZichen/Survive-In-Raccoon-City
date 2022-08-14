@@ -11,10 +11,10 @@ public class TimerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timerText.text = "03:00";
+        timerText.text = "02:00";
         timer = Timer.createTimer("GameTime");
-        // Start timing with 180s
-        timer.startTiming(180, true, OnComplete, OnProcess);
+        // Start timing with 120s
+        timer.startTiming(120, true, OnComplete, OnProcess);
     }
 
     // Update is called once per frame
