@@ -148,8 +148,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e635d7a7edc9a4a3d8430e01a7ae5124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_X_SPEED: 0.4
+  is_boss: 0
+  health: 30
+  fullhealth: 30
+  MAX_X_SPEED: 0.6
   MAX_Y_SPEED: 0.6
+  Attack_range_x: 0.01
+  Attack_range_y: 0.01
+  HPbar: {fileID: 0}
+  ZombieHpBar: {fileID: 0}
+  HpBarObject: {fileID: 0}
+  ZombieBulletPrefab: {fileID: 0}
   milkPrefab: {fileID: 5840655683712850735, guid: 474632c8054a84c348049a9340283b0d, type: 3}
   stimPrefab: {fileID: 35764403863793777, guid: 62e69470099e54090aa18121fdb45b42, type: 3}
   zombienoise: {fileID: 2703653124441483938}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ImageChangeController : MonoBehaviour
+public class ImageChangeStartController : MonoBehaviour
 {
     private float ftime;
     private float sleeptime = 5f;
@@ -14,7 +14,7 @@ public class ImageChangeController : MonoBehaviour
     public Sprite[] spriteArray;
     public bool start = true;
     public bool end = false;
-    public bool firstEndScene = false;
+    public bool firstScene = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,7 @@ public class ImageChangeController : MonoBehaviour
                     sceneText.SetActive(true);
                 }
             }
-        }else if(end&&firstEndScene){
+        }else if(end){
             ftime += Time.deltaTime;
             if(ftime >= 0.12f)
             {
@@ -47,12 +47,12 @@ public class ImageChangeController : MonoBehaviour
                 ftime = 0f;
                 if(index == 0){
                     end = false;
-                    SceneManager.LoadScene("EndScene2");
+                    if(firstScene){
+                        SceneManager.LoadScene("StartScene2");
+                    }else{
+                        SceneManager.LoadScene("MenuScene");
+                    }
                 }
-            }
-        }else if(!firstEndScene){
-            if(Input.GetKeyDown("space")){
-                SceneManager.LoadScene("IntroScene");
             }
         }else{
             sleeptime -= Time.deltaTime;
@@ -61,5 +61,5 @@ public class ImageChangeController : MonoBehaviour
                 sleeptime = 10000f;
             }
         }
-   }
+    }
 }

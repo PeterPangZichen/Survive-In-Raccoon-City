@@ -43,7 +43,11 @@ public class MenuManager : MonoBehaviour
         if(Input.GetKeyDown("space")){
             if(MenuScript.levelPass[currentLevel-1]){
                 MenuScript.difficulty = currentLevel-1;
-                SceneManager.LoadScene("MainScene");
+                if(currentLevel-1!=0){
+                    SceneManager.LoadScene("TutorialScene");
+                }else{
+                    SceneManager.LoadScene("MainScene");
+                }
                 audio.Play();
             }
         };

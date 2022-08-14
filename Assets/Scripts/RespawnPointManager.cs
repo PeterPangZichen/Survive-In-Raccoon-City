@@ -6,14 +6,17 @@ public class RespawnPointManager : MonoBehaviour
 {
     public GameObject[] ZombiePrefebs;
     public MenuData MenuData;
+    public GameObject Boss;
     
     private int difficulty;
     private float timer;
     private float delayTime = 5.0f;
+    private int count = 0;
     // Start is called before the first frame update
     void Start()
     {
         difficulty = MenuData.difficulty;
+        Boss.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,10 +40,17 @@ public class RespawnPointManager : MonoBehaviour
                     Instantiate(ZombiePrefebs[index], new Vector3(this.transform.position.x, this.transform.position.y  +  1.0f, this.transform.position.z), Quaternion.identity);
                     break;
                 case 3:
-                    index = Random.Range(0,6);
+                    index = Random.Range(0,5);
                     Instantiate(ZombiePrefebs[index], new Vector3(this.transform.position.x, this.transform.position.y  +  1.0f, this.transform.position.z), Quaternion.identity);
                     break;
                 case 4:
+                    index = Random.Range(5,6);
+                    Instantiate(ZombiePrefebs[index], new Vector3(this.transform.position.x, this.transform.position.y  +  1.0f, this.transform.position.z), Quaternion.identity);
+                    if(count>10){
+                        Boss.SetActive(true);
+                    }else{
+                        count++;
+                    }
                     break;
             }
         }
