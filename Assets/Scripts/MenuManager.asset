@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: MenuManager
   m_EditorClassIdentifier: 
   DeveloperDescription: 
+  difficulty: 0
+  levelPass: 0100000000
