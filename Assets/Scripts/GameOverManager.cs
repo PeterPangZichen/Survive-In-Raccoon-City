@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
+    public MenuData menudata;
     // Start is called before the first frame update
     void Start()
     {
