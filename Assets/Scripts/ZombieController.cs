@@ -22,8 +22,8 @@ public class ZombieController : MonoBehaviour
     // Damage
     private int health = 40;
     private int fullhealth = 40;
-    private float MAX_X_SPEED = 0.4f;
-    private float MAX_Y_SPEED = 0.2f;
+    public float MAX_X_SPEED = 0.4f;
+    public float MAX_Y_SPEED = 0.2f;
     private float Attack_range_x = 0.01f;
     private float Attack_range_y = 0.01f;
     private GameObject target;
