@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimerController : MonoBehaviour
 {
     public Text timerText;
+    public MenuData menudata;
     private Timer timer;
     // Start is called before the first frame update
     void Start()
@@ -14,7 +16,7 @@ public class TimerController : MonoBehaviour
         timerText.text = "02:00";
         timer = Timer.createTimer("GameTime");
         // Start timing with 120s
-        timer.startTiming(120, true, OnComplete, OnProcess);
+        timer.startTiming(10, true, OnComplete, OnProcess);
     }
 
     // Update is called once per frame
@@ -24,7 +26,10 @@ public class TimerController : MonoBehaviour
 
     void OnComplete()
     {
-
+        if(menudata.difficulty<4){
+            menudata.levelPass[menudata.difficulty+1] = true;
+        }
+        SceneManager.LoadScene("MenuScene");
     }
 
     // 计时器的进程

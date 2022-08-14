@@ -2007,6 +2007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 541121761}
+  menudata: {fileID: 11400000, guid: e3ec6f812f0934866adeb653e11973c4, type: 2}
 --- !u!114 &541121761
 MonoBehaviour:
   m_ObjectHideFlags: 0
