@@ -13,7 +13,8 @@ public class TimerController : MonoBehaviour
     {
         timerText.text = "03:00";
         timer = Timer.createTimer("GameTime");
-        timer.startTiming(120, true, OnComplete, OnProcess);
+        // Start timing with 180s
+        timer.startTiming(180, true, OnComplete, OnProcess);
     }
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class TimerController : MonoBehaviour
 
     void OnComplete()
     {
+
     }
 
     // 计时器的进程

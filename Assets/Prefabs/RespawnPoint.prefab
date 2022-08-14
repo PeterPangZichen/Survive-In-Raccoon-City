@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2207670297961444268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2207670297961444306}
+  - component: {fileID: 2207670297961444307}
+  m_Layer: 0
+  m_Name: RespawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2207670297961444306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207670297961444268}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.49, y: -14.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2207670297961444307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207670297961444268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25d1dd6e9521422c95ee8c22188911b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZombiePrefebs:
+  - {fileID: 1000055613948646767, guid: 20dd075bfaf73487bae80f52714dde82, type: 3}
+  - {fileID: 7513191482771077958, guid: 64fd4fac748ac4844ac34d5090563eb7, type: 3}
+  - {fileID: 2844530978594993211, guid: f4024cfedd6534213b44461eb22bed77, type: 3}
+  - {fileID: 6345570084822239012, guid: 1c6b91911117745d78d0033916a24ecf, type: 3}
+  - {fileID: 5371078944703373179, guid: 87df47d3f6e6040cc82e85cf80799434, type: 3}
+  - {fileID: 5602893457258107372, guid: 01cd1c6999caf4ca889595bbb022784c, type: 3}
+  MenuData: {fileID: 11400000, guid: e3ec6f812f0934866adeb653e11973c4, type: 2}

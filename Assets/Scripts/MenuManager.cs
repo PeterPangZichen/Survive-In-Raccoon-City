@@ -7,7 +7,6 @@ public class MenuManager : MonoBehaviour
 {
     public int NumOfLevels;
     public Sprite[] Levels;
-    public int[] Difficulties;
 
     public MenuData MenuScript;
     public SpriteRenderer LevelSprite;
@@ -35,7 +34,7 @@ public class MenuManager : MonoBehaviour
             }
         };
         if(Input.GetKeyDown("space")){
-            MenuScript.SetValue(Difficulties[currentLevel-1]);
+            MenuScript.difficulty = currentLevel-1;
             SceneManager.LoadScene("MainScene");
         };
     }

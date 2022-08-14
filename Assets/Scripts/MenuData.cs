@@ -9,20 +9,13 @@ public class MenuData : ScriptableObject
     [Multiline]
     public string DeveloperDescription = "";
 #endif
-    private int _numOfZombies = 0;
-    public int NumOfZombies{
+    private int _difficulty = 0;
+    public int difficulty{
         get{
-            return _numOfZombies;
+            return _difficulty;
         }
-    }
-
-    public void SetValue(int value)
-    {
-        _numOfZombies = value;
-    }
-
-    public int GetValue()
-    {
-        return _numOfZombies;
+        set{
+            _difficulty = value;
+        }
     }
 }

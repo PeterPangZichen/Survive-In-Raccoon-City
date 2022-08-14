@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BaseController : MonoBehaviour
 {
@@ -36,7 +37,8 @@ public class BaseController : MonoBehaviour
         if(health<=0){
             // Destroy(gameObject);
             // Destroy(HpBarObject);
-            Time.timeScale = 0; // pause the game
+            // Change to Gameover scene
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 }
