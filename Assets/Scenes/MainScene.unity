@@ -8730,6 +8730,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 380048103}
     - target: {fileID: 5617217500260540564, guid: 67e7927da9914934492040a93a4c3d5e, type: 3}
+      propertyPath: MAX_X_SPEED
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5617217500260540564, guid: 67e7927da9914934492040a93a4c3d5e, type: 3}
+      propertyPath: MAX_Y_SPEED
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5617217500260540564, guid: 67e7927da9914934492040a93a4c3d5e, type: 3}
       propertyPath: ZombieHpBar
       value: 
       objectReference: {fileID: 380048105}

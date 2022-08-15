@@ -40,7 +40,7 @@ public class BulletZombieController : MonoBehaviour
             return 12;
         }
         if(CurrentWeapon == 3){
-            return 5;
+            return 3;
         }
         if(CurrentWeapon == 4){
             return 20;

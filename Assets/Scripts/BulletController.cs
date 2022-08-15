@@ -34,16 +34,16 @@ public class BulletController : MonoBehaviour
 
     private int getDamageByWeapon(){
         if(CurrentWeapon == 1){
-            return 5;
+            return 10;
         }
         if(CurrentWeapon == 2){
-            return 12;
+            return 28;
         }
         if(CurrentWeapon == 3){
-            return 8;
+            return 10;
         }
         if(CurrentWeapon == 4){
-            return 20;
+            return 40;
         }
         if(CurrentWeapon == 5){
             return 100;

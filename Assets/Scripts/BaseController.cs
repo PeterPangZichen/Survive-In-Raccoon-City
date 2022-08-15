@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class BaseController : MonoBehaviour
 {
-    public int health = 100;
-    public int fullhealth = 100;
+    private int health = 1000;
+    private int fullhealth = 1000;
     public Transform HPbar;
     public Slider BaseHpBar;
     public GameObject HpBarObject;
